@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@nuware/functions'), require('@nuware/lenses')) :
   typeof define === 'function' && define.amd ? define(['@nuware/functions', '@nuware/lenses'], factory) :
-  (global.L = factory(global.F,global.L));
+  (global.Emitter = factory(global.F,global.L));
 }(this, (function (functions,lenses) { 'use strict';
 
   const Emitter = () => {
