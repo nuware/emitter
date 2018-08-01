@@ -14,7 +14,7 @@
     "clean": "rimraf lib dist es",
     "lint": "eslint src/index.js",
     "build:es": "rollup -f esm -i src/index.js -o es/index.js -e @nuware/functions,@nuware/lenses",
-    "build:umd": "rollup -f umd -i src/index.js -o dist/index.js -n L -g @nuware/functions:F,@nuware/lenses:L",
+    "build:umd": "rollup -f umd -i src/index.js -o dist/index.js -n Emitter -g @nuware/functions:F,@nuware/lenses:L",
     "build:cjs": "rollup -f cjs -i src/index.js -o lib/index.js -e @nuware/functions,@nuware/lenses",
     "build": "npm run build:es && npm run build:umd && npm run build:cjs",
     "release": "npm run clean && npm run lint && npm run build"
