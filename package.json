@@ -2,9 +2,22 @@
   "name": "@nuware/emitter",
   "version": "0.1.2",
   "description": "Event Emitter",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "src"
+  ],
   "scripts": {
-    "lint": "eslint --fix index.js"
+    "clean": "rimraf lib dist es",
+    "lint": "eslint src/index.js",
+    "build:es": "rollup -f esm -i src/index.js -o es/index.js -e @nuware/functions,@nuware/lenses",
+    "build:umd": "rollup -f umd -i src/index.js -o dist/index.js -n L -g @nuware/functions:F,@nuware/lenses:L",
+    "build:cjs": "rollup -f cjs -i src/index.js -o lib/index.js -e @nuware/functions,@nuware/lenses",
+    "build": "npm run build:es && npm run build:umd && npm run build:cjs",
+    "release": "npm run clean && npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,13 +34,17 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0"
-  },
-  "eslintConfig": {
-    "extends": "standard"
+    "eslint-plugin-standard": "^3.1.0",
+    "rollup": "^0.63.4"
   },
   "dependencies": {
-    "@nuware/functions": "^0.1.3",
-    "@nuware/lenses": "^0.1.2"
+    "@nuware/functions": "^0.1.4",
+    "@nuware/lenses": "^0.1.4"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "no-multi-spaces": "off"
+    }
   }
 }
