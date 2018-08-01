@@ -2,21 +2,18 @@
   "name": "@nuware/emitter",
   "version": "0.1.5",
   "description": "Event Emitter",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "module": "es/index.js",
   "files": [
     "dist",
-    "lib",
-    "es",
-    "src"
+    "es"
   ],
   "scripts": {
-    "clean": "rimraf lib dist es",
+    "clean": "rimraf dist es",
     "lint": "eslint src/index.js",
     "build:es": "rollup -f esm -i src/index.js -o es/index.js -e @nuware/functions,@nuware/lenses",
     "build:umd": "rollup -f umd -i src/index.js -o dist/index.js -n Emitter -g @nuware/functions:F,@nuware/lenses:L",
-    "build:cjs": "rollup -f cjs -i src/index.js -o lib/index.js -e @nuware/functions,@nuware/lenses",
-    "build": "npm run build:es && npm run build:umd && npm run build:cjs",
+    "build": "npm run build:es && npm run build:umd",
     "release": "npm run clean && npm run lint && npm run build"
   },
   "repository": {
@@ -38,8 +35,8 @@
     "rollup": "^0.63.4"
   },
   "dependencies": {
-    "@nuware/functions": "^0.1.4",
-    "@nuware/lenses": "^0.1.4"
+    "@nuware/functions": "^0.1.7",
+    "@nuware/lenses": "^0.1.6"
   },
   "eslintConfig": {
     "extends": "standard",
