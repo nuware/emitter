@@ -37,7 +37,8 @@ const Emitter = () => {
   return freeze({
     off,
     on,
-    emit
+    emit,
+    state: () => state
   })
 }
 
