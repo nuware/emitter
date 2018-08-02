@@ -9,9 +9,13 @@ npm install @nuware/emitter --save
 or
 
 ```html
-<script defer src="https://unpkg.com/@nuware/functions@latest/dist/index.js"></script>
-<script defer src="https://unpkg.com/@nuware/lenses@latest/dist/index.js"></script>
-<script defer src="https://unpkg.com/@nuware/emitter@latest/dist/index.js"></script>
+<script defer src="https://unpkg.com/@nuware/emitter@latest/dist/emitter.umd.js"></script>
+```
+
+or
+
+```html
+<script defer src="https://unpkg.com/@nuware/emitter@latest/dist/emitter.min.js"></script>
 ```
 
 ## Usage
@@ -19,7 +23,7 @@ or
 Browser
 
 ```javascript
-const Emitter = window.Emitter
+const Emitter = window.nuware.Emitter
 ```
 
 Node
