@@ -5,7 +5,8 @@ import {
   each,
   filter,
   freeze,
-  isFunction
+  isFunction,
+  dissoc
 } from '@nuware/functions'
 
 import {
@@ -30,7 +31,9 @@ const Emitter = () => {
   }
 
   const off = (type) => (handler) => {
-    state = Over(Prop(String(type)))((handlers = []) => isFunction(handler) ? filter(ne(handler))(handlers) : [])(state)
+    state = isFunction(handler)
+      ? Over(Prop(String(type)))((handlers = []) => filter(ne(handler))(handlers))(state)
+      : dissoc(String(type))(state)
 
     return void (0)
   }
