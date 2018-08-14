@@ -4,7 +4,8 @@ import {
   append,
   each,
   filter,
-  freeze
+  freeze,
+  isFunction
 } from '@nuware/functions'
 
 import {
@@ -23,13 +24,13 @@ const Emitter = () => {
   }
 
   const on = (type) => (handler) => {
-    state = Over(Prop(String(type)))((handlers) => append(handler)(handlers || []))(state)
+    state = Over(Prop(String(type)))((handlers = []) => isFunction(handler) ? append(handler)(handlers) : handlers)(state)
 
     return void (0)
   }
 
   const off = (type) => (handler) => {
-    state = Over(Prop(String(type)))((handlers) => filter(item => ne(item)(handler))(handlers || []))(state)
+    state = Over(Prop(String(type)))((handlers = []) => isFunction(handler) ? filter(ne(handler))(handlers) : [])(state)
 
     return void (0)
   }
