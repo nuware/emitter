@@ -1,6 +1,7 @@
 import {
   eq,
   ne,
+  has,
   apply,
   append,
   each,
@@ -44,17 +45,29 @@ const Emitter = () => {
     return () => off(type)(handler)
   }
 
+  const once = (type) => (handler) => {
+    const le = Prop(String(type))
+    const fn = (...args) => {
+      off(type)(fn)
+      apply(handler)(args)
+    }
+
+    state = Over(le)((handlers = []) => append(fn)(handlers))(state)
+    return void (0)
+  }
+
   const have = (type, handler) => {
     const le = Prop(String(type))
     const handlers = Get(le)(state) || []
     return isFunction(handler)
       ? isDefined(find(eq(handler))(handlers))
-      : state.hasOwnProperty(type)
+      : has(type)(state)
   }
 
   return freeze({
     off,
     on,
+    once,
     emit,
     has: have
   })
