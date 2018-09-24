@@ -7,7 +7,6 @@ import {
   each,
   filter,
   find,
-  freeze,
   isFunction,
   isDefined,
   dissoc
@@ -64,13 +63,13 @@ const Emitter = () => {
       : has(type)(state)
   }
 
-  return freeze({
+  return {
     off,
     on,
     once,
     emit,
     has: have
-  })
+  }
 }
 
 export default Emitter
