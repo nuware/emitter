@@ -60,7 +60,7 @@ const Emitter = () => {
     const handlers = Get(le)(state) || []
     return isFunction(handler)
       ? isDefined(find(eq(handler))(handlers))
-      : has(type)(state)
+      : has(type)(state) && (handlers.length > 0)
   }
 
   return {
