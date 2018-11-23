@@ -1,6 +1,6 @@
 {
   "name": "@nuware/emitter",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Event Emitter",
   "main": "dist/emitter.cjs.js",
   "module": "dist/emitter.esm.js",
